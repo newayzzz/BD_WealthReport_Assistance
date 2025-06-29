@@ -1,0 +1,207 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WealthReportBDAI Asset Schema",
+  "description": "Comprehensive schema for organizing family wealth, assets, and inheritance planning for Bengali families",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Unique identifier for the user"
+    },
+    "owner_name": {
+      "type": "string",
+      "description": "Full name of the asset owner"
+    },
+    "relationship_to_user": {
+      "type": "string",
+      "enum": ["self", "father", "mother", "spouse", "child", "other"],
+      "description": "Relationship of the asset owner to the primary user"
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of all assets owned by this person",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "LIC",
+              "PF", 
+              "Gold",
+              "SIP",
+              "FD",
+              "Land",
+              "Bank",
+              "Loan",
+              "MutualFund",
+              "Property",
+              "Cash",
+              "Stock",
+              "Other"
+            ],
+            "description": "Category of the asset"
+          },
+          "label": {
+            "type": "string",
+            "description": "User-friendly name or description of the asset"
+          },
+          "institution": {
+            "type": "string",
+            "description": "Name of the bank, insurance company, or financial institution"
+          },
+          "asset_id": {
+            "type": "string",
+            "description": "Policy number, account number, or unique identifier"
+          },
+          "nominee": {
+            "type": "string",
+            "description": "Name of the nominated beneficiary"
+          },
+          "current_value": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Current market value or balance of the asset"
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["INR", "USD", "BDT", "Other"],
+            "default": "INR",
+            "description": "Currency of the asset value"
+          },
+          "maturity_date": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Maturity date in YYYY-MM-DD format"
+          },
+          "next_due_date": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Next premium due date or renewal date in YYYY-MM-DD format"
+          },
+          "location": {
+            "type": "string",
+            "description": "Physical location of the asset (for property, gold, documents)"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Additional notes or important details about the asset"
+          },
+          "reminder_enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether to send reminders for this asset"
+          },
+          "document_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL or path to digital copy of asset documents"
+          }
+        },
+        "required": ["type", "label", "current_value"],
+        "additionalProperties": false
+      }
+    },
+    "digital_will": {
+      "type": "object",
+      "description": "Digital will and inheritance instructions",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["in-progress", "completed"],
+          "description": "Current status of the digital will"
+        },
+        "instructions": {
+          "type": "string",
+          "description": "Detailed inheritance instructions and wishes"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Last update date in YYYY-MM-DD format"
+        }
+      },
+      "required": ["status"],
+      "additionalProperties": false
+    },
+    "reminder_preferences": {
+      "type": "object",
+      "description": "User preferences for receiving reminders and notifications",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address for notifications"
+        },
+        "phone": {
+          "type": "string",
+          "pattern": "^\\+?[1-9]\\d{1,14}$",
+          "description": "Phone number in international format"
+        },
+        "whatsapp": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable WhatsApp notifications"
+        },
+        "telegram": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Telegram notifications"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["user_id", "owner_name", "relationship_to_user", "assets"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "user_id": "user_12345",
+      "owner_name": "রহিম উদ্দিন",
+      "relationship_to_user": "self",
+      "assets": [
+        {
+          "type": "LIC",
+          "label": "জীবন বীমা পলিসি",
+          "institution": "Life Insurance Corporation of India",
+          "asset_id": "123456789",
+          "nominee": "ফাতেমা খাতুন",
+          "current_value": 500000,
+          "currency": "INR",
+          "maturity_date": "2030-12-31",
+          "next_due_date": "2024-03-15",
+          "location": "Dhaka",
+          "notes": "Annual premium: ₹25,000",
+          "reminder_enabled": true,
+          "document_url": "https://example.com/documents/lic_policy.pdf"
+        },
+        {
+          "type": "Gold",
+          "label": "সোনার গহনা",
+          "institution": "N/A",
+          "asset_id": "GOLD_001",
+          "nominee": "সন্তান",
+          "current_value": 200000,
+          "currency": "INR",
+          "location": "বাড়ির লকার",
+          "notes": "50 গ্রাম সোনার গহনা",
+          "reminder_enabled": false
+        }
+      ],
+      "digital_will": {
+        "status": "in-progress",
+        "instructions": "সমস্ত সম্পত্তি আমার স্ত্রী এবং সন্তানদের মধ্যে সমানভাবে ভাগ করে দিতে হবে।",
+        "last_updated": "2024-01-15"
+      },
+      "reminder_preferences": {
+        "email": "rahim@example.com",
+        "phone": "+8801712345678",
+        "whatsapp": true,
+        "telegram": false
+      }
+    }
+  ]
+}
