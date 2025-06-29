@@ -1,28 +1,55 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "WealthReportBDAI Asset Schema",
-  "description": "Comprehensive schema for organizing family wealth, assets, and inheritance planning for Bengali families",
+  "description": "Comprehensive schema for organizing family wealth, assets, and inheritance planning for Bengali families with per-family/per-owner storage support",
   "type": "object",
   "properties": {
+    "schema_version": {
+      "type": "string",
+      "default": "1.0.0",
+      "description": "Schema version for backward compatibility"
+    },
+    "family_id": {
+      "type": "string",
+      "description": "Unique identifier for the family unit (optional for family-wide tracking)"
+    },
     "user_id": {
       "type": "string",
-      "description": "Unique identifier for the user"
+      "description": "Unique identifier for the primary user managing this record"
     },
     "owner_name": {
       "type": "string",
       "description": "Full name of the asset owner"
     },
+    "owner_id": {
+      "type": "string",
+      "description": "Unique identifier for the asset owner (for cross-referencing)"
+    },
     "relationship_to_user": {
       "type": "string",
-      "enum": ["self", "father", "mother", "spouse", "child", "other"],
+      "enum": ["self", "father", "mother", "spouse", "child", "sibling", "grandparent", "other"],
       "description": "Relationship of the asset owner to the primary user"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when this record was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when this record was last updated"
     },
     "assets": {
       "type": "array",
-      "description": "List of all assets owned by this person",
+      "description": "Dynamic array of all assets owned by this person",
       "items": {
         "type": "object",
         "properties": {
+          "asset_uuid": {
+            "type": "string",
+            "description": "Unique identifier for this specific asset"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -38,6 +65,12 @@
               "Property",
               "Cash",
               "Stock",
+              "Bond",
+              "Crypto",
+              "Business",
+              "Vehicle",
+              "Jewelry",
+              "Antique",
               "Other"
             ],
             "description": "Category of the asset"
@@ -55,8 +88,32 @@
             "description": "Policy number, account number, or unique identifier"
           },
           "nominee": {
-            "type": "string",
-            "description": "Name of the nominated beneficiary"
+            "type": "array",
+            "description": "List of nominated beneficiaries with their details",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the nominee"
+                },
+                "relationship": {
+                  "type": "string",
+                  "description": "Relationship to the asset owner"
+                },
+                "percentage": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100,
+                  "description": "Percentage share of the asset"
+                },
+                "contact": {
+                  "type": "string",
+                  "description": "Contact information of the nominee"
+                }
+              },
+              "required": ["name", "relationship"]
+            }
           },
           "current_value": {
             "type": "number",
@@ -65,9 +122,15 @@
           },
           "currency": {
             "type": "string",
-            "enum": ["INR", "USD", "BDT", "Other"],
+            "enum": ["INR", "USD", "BDT", "EUR", "GBP", "Other"],
             "default": "INR",
             "description": "Currency of the asset value"
+          },
+          "purchase_date": {
+            "type": "string",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Date when the asset was acquired in YYYY-MM-DD format"
           },
           "maturity_date": {
             "type": "string",
@@ -94,13 +157,93 @@
             "default": true,
             "description": "Whether to send reminders for this asset"
           },
-          "document_url": {
+          "document_urls": {
+            "type": "array",
+            "description": "Array of URLs or paths to digital copies of asset documents",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["policy", "statement", "certificate", "receipt", "other"],
+                  "description": "Type of document"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URL or path to the document"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Description of the document"
+                }
+              },
+              "required": ["type", "url"]
+            }
+          },
+          "tags": {
+            "type": "array",
+            "description": "Flexible tagging system for asset status and categorization",
+            "items": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive", 
+                "claimed",
+                "unclaimed",
+                "matured",
+                "pending",
+                "verified",
+                "unverified",
+                "high-priority",
+                "low-priority",
+                "requires-action",
+                "disputed",
+                "inherited",
+                "joint",
+                "sole",
+                "tax-exempt",
+                "taxable",
+                "liquid",
+                "illiquid",
+                "appreciating",
+                "depreciating",
+                "renewable",
+                "non-renewable"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "custom_tags": {
+            "type": "array",
+            "description": "User-defined custom tags for flexible categorization",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "risk_level": {
             "type": "string",
-            "format": "uri",
-            "description": "URL or path to digital copy of asset documents"
+            "enum": ["low", "medium", "high", "very-high"],
+            "description": "Risk assessment of the asset"
+          },
+          "liquidity": {
+            "type": "string",
+            "enum": ["immediate", "short-term", "medium-term", "long-term", "illiquid"],
+            "description": "How quickly the asset can be converted to cash"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when this asset was added"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when this asset was last updated"
           }
         },
-        "required": ["type", "label", "current_value"],
+        "required": ["asset_uuid", "type", "label", "current_value"],
         "additionalProperties": false
       }
     },
@@ -110,18 +253,68 @@
       "properties": {
         "status": {
           "type": "string",
-          "enum": ["in-progress", "completed"],
+          "enum": ["not-started", "in-progress", "completed", "reviewed", "finalized"],
           "description": "Current status of the digital will"
         },
         "instructions": {
           "type": "string",
           "description": "Detailed inheritance instructions and wishes"
         },
+        "beneficiaries": {
+          "type": "array",
+          "description": "List of beneficiaries mentioned in the will",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the beneficiary"
+              },
+              "relationship": {
+                "type": "string",
+                "description": "Relationship to the asset owner"
+              },
+              "contact": {
+                "type": "string",
+                "description": "Contact information"
+              },
+              "inheritance_percentage": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100,
+                "description": "Overall inheritance percentage"
+              }
+            },
+            "required": ["name", "relationship"]
+          }
+        },
+        "executor": {
+          "type": "object",
+          "description": "Person responsible for executing the will",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the executor"
+            },
+            "relationship": {
+              "type": "string",
+              "description": "Relationship to the asset owner"
+            },
+            "contact": {
+              "type": "string",
+              "description": "Contact information of the executor"
+            }
+          }
+        },
         "last_updated": {
           "type": "string",
-          "format": "date",
-          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-          "description": "Last update date in YYYY-MM-DD format"
+          "format": "date-time",
+          "description": "Last update timestamp"
+        },
+        "version": {
+          "type": "number",
+          "default": 1,
+          "description": "Version number of the will"
         }
       },
       "required": ["status"],
@@ -150,57 +343,250 @@
           "type": "boolean",
           "default": false,
           "description": "Enable Telegram notifications"
+        },
+        "sms": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable SMS notifications"
+        },
+        "push_notifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable mobile app push notifications"
+        },
+        "reminder_frequency": {
+          "type": "string",
+          "enum": ["daily", "weekly", "monthly", "quarterly", "custom"],
+          "default": "monthly",
+          "description": "How often to send reminders"
+        },
+        "advance_notice_days": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 365,
+          "default": 30,
+          "description": "How many days in advance to send due date reminders"
         }
       },
       "additionalProperties": false
+    },
+    "family_sharing": {
+      "type": "object",
+      "description": "Settings for sharing asset information within the family",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether family sharing is enabled"
+        },
+        "shared_with": {
+          "type": "array",
+          "description": "List of family members who have access to this information",
+          "items": {
+            "type": "object",
+            "properties": {
+              "user_id": {
+                "type": "string",
+                "description": "User ID of the family member"
+              },
+              "name": {
+                "type": "string",
+                "description": "Name of the family member"
+              },
+              "relationship": {
+                "type": "string",
+                "description": "Relationship to the asset owner"
+              },
+              "access_level": {
+                "type": "string",
+                "enum": ["view", "edit", "admin"],
+                "description": "Level of access granted"
+              }
+            },
+            "required": ["user_id", "name", "relationship", "access_level"]
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata for system use",
+      "properties": {
+        "data_source": {
+          "type": "string",
+          "enum": ["manual", "ai-assisted", "document-scan", "bank-integration", "import"],
+          "description": "How this data was collected"
+        },
+        "verification_status": {
+          "type": "string",
+          "enum": ["unverified", "partially-verified", "verified", "needs-update"],
+          "description": "Verification status of the asset information"
+        },
+        "last_sync": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last time data was synced with external sources"
+        },
+        "encryption_level": {
+          "type": "string",
+          "enum": ["basic", "enhanced", "maximum"],
+          "default": "enhanced",
+          "description": "Level of encryption applied to sensitive data"
+        }
+      }
     }
   },
   "required": ["user_id", "owner_name", "relationship_to_user", "assets"],
   "additionalProperties": false,
   "examples": [
     {
+      "schema_version": "1.0.0",
+      "family_id": "family_bengali_001",
       "user_id": "user_12345",
       "owner_name": "রহিম উদ্দিন",
+      "owner_id": "owner_67890",
       "relationship_to_user": "self",
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-15T10:30:00Z",
       "assets": [
         {
+          "asset_uuid": "asset_lic_001",
           "type": "LIC",
-          "label": "জীবন বীমা পলিসি",
+          "label": "জীবন বীমা পলিসি - এন্ডোমেন্ট প্ল্যান",
           "institution": "Life Insurance Corporation of India",
           "asset_id": "123456789",
-          "nominee": "ফাতেমা খাতুন",
+          "nominee": [
+            {
+              "name": "ফাতেমা খাতুন",
+              "relationship": "স্ত্রী",
+              "percentage": 60,
+              "contact": "+8801712345678"
+            },
+            {
+              "name": "আব্দুল করিম",
+              "relationship": "পুত্র",
+              "percentage": 40,
+              "contact": "+8801787654321"
+            }
+          ],
           "current_value": 500000,
           "currency": "INR",
+          "purchase_date": "2020-01-15",
           "maturity_date": "2030-12-31",
           "next_due_date": "2024-03-15",
           "location": "Dhaka",
-          "notes": "Annual premium: ₹25,000",
+          "notes": "Annual premium: ₹25,000. Policy includes accident benefit.",
           "reminder_enabled": true,
-          "document_url": "https://example.com/documents/lic_policy.pdf"
+          "document_urls": [
+            {
+              "type": "policy",
+              "url": "https://example.com/documents/lic_policy.pdf",
+              "description": "Original policy document"
+            },
+            {
+              "type": "receipt",
+              "url": "https://example.com/documents/last_premium_receipt.pdf",
+              "description": "Last premium payment receipt"
+            }
+          ],
+          "tags": ["active", "verified", "high-priority", "renewable"],
+          "custom_tags": ["family-protection", "long-term"],
+          "risk_level": "low",
+          "liquidity": "long-term",
+          "created_at": "2024-01-01T00:00:00Z",
+          "updated_at": "2024-01-15T10:30:00Z"
         },
         {
+          "asset_uuid": "asset_gold_001",
           "type": "Gold",
-          "label": "সোনার গহনা",
+          "label": "সোনার গহনা - বিবাহের সেট",
           "institution": "N/A",
           "asset_id": "GOLD_001",
-          "nominee": "সন্তান",
+          "nominee": [
+            {
+              "name": "রাহেলা খাতুন",
+              "relationship": "কন্যা",
+              "percentage": 100
+            }
+          ],
           "current_value": 200000,
           "currency": "INR",
-          "location": "বাড়ির লকার",
-          "notes": "50 গ্রাম সোনার গহনা",
-          "reminder_enabled": false
+          "purchase_date": "2015-06-20",
+          "location": "বাড়ির লকার - তলার ড্রয়ার",
+          "notes": "50 গ্রাম সোনার গহনা। বিবাহের সময় কেনা।",
+          "reminder_enabled": false,
+          "document_urls": [
+            {
+              "type": "certificate",
+              "url": "https://example.com/documents/gold_certificate.pdf",
+              "description": "Gold purity certificate"
+            }
+          ],
+          "tags": ["active", "verified", "appreciating", "illiquid"],
+          "custom_tags": ["traditional", "inheritance"],
+          "risk_level": "medium",
+          "liquidity": "medium-term",
+          "created_at": "2024-01-01T00:00:00Z",
+          "updated_at": "2024-01-10T15:45:00Z"
         }
       ],
       "digital_will": {
         "status": "in-progress",
-        "instructions": "সমস্ত সম্পত্তি আমার স্ত্রী এবং সন্তানদের মধ্যে সমানভাবে ভাগ করে দিতে হবে।",
-        "last_updated": "2024-01-15"
+        "instructions": "সমস্ত সম্পত্তি আমার স্ত্রী এবং সন্তানদের মধ্যে ইসলামিক শরীয়া অনুযায়ী ভাগ করে দিতে হবে। বিশেষ নির্দেশনা: LIC পলিসির টাকা দিয়ে সন্তানদের শিক্ষার খরচ চালাতে হবে।",
+        "beneficiaries": [
+          {
+            "name": "ফাতেমা খাতুন",
+            "relationship": "স্ত্রী",
+            "contact": "+8801712345678",
+            "inheritance_percentage": 40
+          },
+          {
+            "name": "আব্দুল করিম",
+            "relationship": "পুত্র",
+            "contact": "+8801787654321",
+            "inheritance_percentage": 30
+          },
+          {
+            "name": "রাহেলা খাতুন",
+            "relationship": "কন্যা",
+            "contact": "+8801798765432",
+            "inheritance_percentage": 30
+          }
+        ],
+        "executor": {
+          "name": "মোহাম্মদ আলী",
+          "relationship": "ভাই",
+          "contact": "+8801756789012"
+        },
+        "last_updated": "2024-01-15T14:20:00Z",
+        "version": 2
       },
       "reminder_preferences": {
         "email": "rahim@example.com",
         "phone": "+8801712345678",
         "whatsapp": true,
-        "telegram": false
+        "telegram": false,
+        "sms": true,
+        "push_notifications": true,
+        "reminder_frequency": "monthly",
+        "advance_notice_days": 30
+      },
+      "family_sharing": {
+        "enabled": true,
+        "shared_with": [
+          {
+            "user_id": "user_54321",
+            "name": "ফাতেমা খাতুন",
+            "relationship": "স্ত্রী",
+            "access_level": "view"
+          }
+        ]
+      },
+      "metadata": {
+        "data_source": "ai-assisted",
+        "verification_status": "partially-verified",
+        "last_sync": "2024-01-15T10:30:00Z",
+        "encryption_level": "enhanced"
       }
     }
   ]
