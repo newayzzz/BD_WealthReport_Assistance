@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Flutter / React Native
+android/
+ios/
+build/
+.expo/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Python
+__pycache__/
+*.py[cod]
+*.env
+env/
+venv/
+
+# IDEs and OS
+.DS_Store
+.idea/
+.vscode/
+*.log
