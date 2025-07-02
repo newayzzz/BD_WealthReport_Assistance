@@ -1,4 +1,4 @@
-# 💰 WealthReportBDAI
+# 💰 Wealth_report_Agent + Digital_will 
 
 A 🇧🇩 Bengali-first AI tool to organize family wealth, track assets, and simplify inheritance planning.
 
