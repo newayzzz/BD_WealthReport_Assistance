@@ -1,0 +1,78 @@
+{
+  "LIC": {
+    "bn": "আমার বাবার একটি জীবন বীমা আছে জীবন বীমা কর্পোরেশনে, যার পরিমাণ ৫ লাখ টাকা।",
+    "en": "My father has a life insurance policy at Jiban Bima Corporation worth 5 lakh taka."
+  },
+  "PF": {
+    "bn": "আমার বড় ভাইয়ের PF আছে তার অফিস থেকে, প্রতি মাসে কিছু টাকা কাটা হয়।",
+    "en": "My elder brother has a PF account through his office with monthly deductions."
+  },
+  "Gold": {
+    "bn": "আমার মার কাছে ২০ ভরি সোনা আছে, যা তিনি বিয়ের সময় পেয়েছিলেন।",
+    "en": "My mother has 20 vori of gold, which she received during her wedding."
+  },
+  "SIP": {
+    "bn": "আমি প্রতি মাসে ৫ হাজার টাকা করে একটি SIP ইনভেস্টমেন্ট করি মিউচুয়াল ফান্ডে।",
+    "en": "I invest 5,000 taka monthly in a SIP mutual fund."
+  },
+  "FD": {
+    "bn": "আমার মা সোনালী ব্যাংকে একটি ফিক্সড ডিপোজিট করেছেন, ৩ বছরের মেয়াদে।",
+    "en": "My mother made a fixed deposit at Sonali Bank for a term of 3 years."
+  },
+  "Land": {
+    "bn": "আমার বাবার নামের উপর রাজশাহীতে ৫ কাঠা জমি আছে।",
+    "en": "There are 5 katha of land in Rajshahi under my father's name."
+  },
+  "Bank": {
+    "bn": "আমার একটা সেভিংস অ্যাকাউন্ট আছে ইসলামী ব্যাংকে।",
+    "en": "I have a savings account at Islami Bank."
+  },
+  "Loan": {
+    "bn": "আমার ভাই একটি গাড়ির লোন নিচ্ছে ডাচ বাংলা ব্যাংক থেকে।",
+    "en": "My brother is taking a car loan from Dutch-Bangla Bank."
+  },
+  "MutualFund": {
+    "bn": "আমি ইউসিবি অ্যাসেট ম্যানেজমেন্টের একটি মিউচুয়াল ফান্ডে ইনভেস্ট করেছি।",
+    "en": "I have invested in a mutual fund from UCB Asset Management."
+  },
+  "Property": {
+    "bn": "আমার দাদার একটি বাড়ি আছে বরিশালে, দুইতলা।",
+    "en": "My grandfather owns a two-story house in Barishal."
+  },
+  "Cash": {
+    "bn": "আমার কাছে নগদ ৫০ হাজার টাকা রাখা আছে বাসায়।",
+    "en": "I have 50,000 taka in cash stored at home."
+  },
+  "Stock": {
+    "bn": "আমি ঢাকা স্টক এক্সচেঞ্জে গ্রামীণফোনের ১০০টি শেয়ার কিনেছি।",
+    "en": "I bought 100 shares of Grameenphone on the Dhaka Stock Exchange."
+  },
+  "Bond": {
+    "bn": "আমার মায়ের নামে একটি সেভিংস বন্ড আছে বাংলাদেশ ব্যাংকে।",
+    "en": "My mother has a savings bond in her name at Bangladesh Bank."
+  },
+  "Crypto": {
+    "bn": "আমি কিছু বিটকয়েন কিনেছি Binance থেকে।",
+    "en": "I bought some Bitcoin from Binance."
+  },
+  "Business": {
+    "bn": "আমার বাবার একটি মুদি দোকান আছে আমাদের এলাকায়।",
+    "en": "My father owns a grocery store in our neighborhood."
+  },
+  "Vehicle": {
+    "bn": "আমার নিজের নামে একটি মোটরবাইক আছে, রেজিস্ট্রেশন নাম্বার সহ।",
+    "en": "I own a motorcycle registered under my name."
+  },
+  "Jewelry": {
+    "bn": "আমার স্ত্রীর কাছে কিছু সোনার গহনা আছে, বিয়েতে দেওয়া হয়েছিল।",
+    "en": "My wife has some gold jewelry that she received during our wedding."
+  },
+  "Antique": {
+    "bn": "আমার দাদার একটি পুরনো ঘড়ি আছে, যেটা অনেক বছরের পুরোনো।",
+    "en": "My grandfather has an old watch that's several decades old."
+  },
+  "Other": {
+    "bn": "আমার একটা ছোটখাটো ইনভেস্টমেন্ট আছে, কিছু বন্ধুর সাথে মিলিয়ে।",
+    "en": "I have a small investment made jointly with some friends."
+  }
+}

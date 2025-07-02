@@ -1,0 +1,35 @@
+{
+  "user_id": "test_user_001",
+  "assets": [
+    {
+      "type": "Life Insurance",
+      "owner": "father",
+      "institution": "Jiban Bima Corporation",
+      "value_estimate": "5 lakh",
+      "location": "Bangladesh",
+      "notes": "Bengali input"
+    },
+    {
+      "type": "Gold",
+      "owner": "mother",
+      "value_estimate": "unknown",
+      "location": "unspecified"
+    },
+    {
+      "type": "FD",
+      "owner": "mother",
+      "institution": "Sonali Bank",
+      "location": "Bangladesh"
+    },
+    {
+      "type": "Land",
+      "owner": "brother",
+      "location": "Rajshahi"
+    },
+    {
+      "type": "PF",
+      "owner": "brother",
+      "institution": "office (unspecified)"
+    }
+  ]
+}

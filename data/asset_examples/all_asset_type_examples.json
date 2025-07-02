@@ -1,0 +1,154 @@
+{
+  "LIC": {
+    "type": "LIC",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: LIC."
+  },
+  "PF": {
+    "type": "PF",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: PF."
+  },
+  "Gold": {
+    "type": "Gold",
+    "owner": "example_owner",
+    "institution": null,
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Gold."
+  },
+  "SIP": {
+    "type": "SIP",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: SIP."
+  },
+  "FD": {
+    "type": "FD",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: FD."
+  },
+  "Land": {
+    "type": "Land",
+    "owner": "example_owner",
+    "institution": null,
+    "value_estimate": "1,00,000",
+    "location": "example_location",
+    "notes": "This is a sample record for asset type: Land."
+  },
+  "Bank": {
+    "type": "Bank",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Bank."
+  },
+  "Loan": {
+    "type": "Loan",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Loan."
+  },
+  "MutualFund": {
+    "type": "MutualFund",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: MutualFund."
+  },
+  "Property": {
+    "type": "Property",
+    "owner": "example_owner",
+    "institution": null,
+    "value_estimate": "1,00,000",
+    "location": "example_location",
+    "notes": "This is a sample record for asset type: Property."
+  },
+  "Cash": {
+    "type": "Cash",
+    "owner": "example_owner",
+    "institution": null,
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Cash."
+  },
+  "Stock": {
+    "type": "Stock",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Stock."
+  },
+  "Bond": {
+    "type": "Bond",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Bond."
+  },
+  "Crypto": {
+    "type": "Crypto",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Crypto."
+  },
+  "Business": {
+    "type": "Business",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": "example_location",
+    "notes": "This is a sample record for asset type: Business."
+  },
+  "Vehicle": {
+    "type": "Vehicle",
+    "owner": "example_owner",
+    "institution": "example_institution",
+    "value_estimate": "1,00,000",
+    "location": "example_location",
+    "notes": "This is a sample record for asset type: Vehicle."
+  },
+  "Jewelry": {
+    "type": "Jewelry",
+    "owner": "example_owner",
+    "institution": null,
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Jewelry."
+  },
+  "Antique": {
+    "type": "Antique",
+    "owner": "example_owner",
+    "institution": null,
+    "value_estimate": "1,00,000",
+    "location": "example_location",
+    "notes": "This is a sample record for asset type: Antique."
+  },
+  "Other": {
+    "type": "Other",
+    "owner": "example_owner",
+    "institution": null,
+    "value_estimate": "1,00,000",
+    "location": null,
+    "notes": "This is a sample record for asset type: Other."
+  }
+}

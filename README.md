@@ -37,7 +37,7 @@ Check the troubleshooting section
 Review the GitHub issues
 Create a new issue with detailed information
 
-📁 Project Structure
+📁 Project Structure - Preview in the Code TAB for correct formatting
 wealthreportBDAI/
 │
 ├── README.md
@@ -57,7 +57,7 @@ wealthreportBDAI/
 │   │   ├── prompt_templates/
 │   │   └── asset_extractor.py
 │   │
-│   ├── backend/                # Flask/Firebase backend logic
+│   ├── backend/                # Flask/Firebase/Ngrok backend logic
 │   │   ├── api.py
 │   │   └── reminders.py
 │   │
