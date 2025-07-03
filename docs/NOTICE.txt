@@ -1,0 +1,29 @@
+NOTICE
+
+Project Name: Oitijhho AI | ঐতিহ্য AI (Translates to HeritageAI)
+Repository: https://github.com/newayzzz/BD_WealthReport_Assistance
+Author: Saqeb Newaz
+Copyright © 2025
+
+This project, including its design, asset schema, documentation, and non-commercial open-source components, is the intellectual property of Saqeb Newaz.
+
+It is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0). See the LICENSE file for full details.
+
+You are free to:
+- Use, share, and adapt the material for personal or non-commercial purposes.
+- Contribute via pull requests, testing, or feature suggestions.
+
+You may NOT:
+- Use this software or its derivatives in commercial products or monetized platforms.
+- Repackage or resell this tool without explicit written permission.
+- Deploy this project as a paid SaaS offering or include it in financial/legal tools without attribution and licensing approval.
+
+This project contains no sensitive financial data. All examples in the `/data` folder are synthetic and used for demonstration/testing purposes only.
+
+For inquiries related to licensing, collaboration, or commercial use, please contact:
+📧 snewaz23@gmail.com  
+🔗 https://github.com/newayzzz
+
+---
+
+Made with 💚 for the Bengali 🇧🇩 community

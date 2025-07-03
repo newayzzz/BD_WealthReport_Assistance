@@ -80,11 +80,15 @@ See `/docs/asset_schema.json` for examples on:
 ## 🙌 Contributing
 PRs and feedback welcome! If you're a developer, legal/finance expert, or someone passionate about building for families in South Asia, please join the journey.
 
+---
+
 ## 🆘 Support
 For issues or questions:
 Check the troubleshooting section
 Review the GitHub issues
 Create a new issue with detailed information
+
+---
 
 ## 📁 Project Structure - Preview in the Code TAB for correct formatting
 wealthreportBDAI/
@@ -127,6 +131,7 @@ wealthreportBDAI/
     ├── settings.dev.json
     └── firebase_config.json
 
+---
 
 **Why this layout?**
 | Component     | Purpose                                              |
@@ -140,7 +145,19 @@ wealthreportBDAI/
 | `.gitignore/` | Prevents unnecessary clutter                         |
 | `LICENSE/`    | Tells others how they can use/contribute to my code |  
 
+---
 
 ## 👨‍💻 Author
 **Saqeb Newaz** 
 Built with 💚 for the Bengali 🇧🇩 community, and for families like mine who had to navigate loss the hard way.
+
+---
+
+> ⚠️ Core logic lives in a private repo (`wealthreport-bd-core`) due to security and deployment reasons. Contact [@SaqebNewaz](https://github.com/newayzzz) for contributor access.
+
+---
+
+Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+## 📄 Notice
+This project includes a `NOTICE.txt` file for additional usage terms and author rights. Please review before reuse or distribution.
